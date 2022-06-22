@@ -2002,19 +2002,29 @@ fn main() {
         6624,
     ];
 
-    let mut prev: i32 = data[0];
-    let mut count: i32 = 0;
+    let count: i32 = 0;
 
-    for n in data {
-        let curr: i32 = n;
+    for (i, val) in data.iter().enumerate() {
+        let i1: usize = i + 1 as usize;
+        let i2: usize = i + 2;
+        let i3: usize = i + 3;
+        let sum1 = val[i] + val[i1] + val[i2];
+        let sum2 = val[i1] + val[i2] + val[i3];
 
-        if curr > prev {
-            count = count + 1;
+        if check_sums(sum1, sum2) {
+            count += 1;
         }
-
-        prev = curr;
     }
 
     println!("{}", count);
+
+}
+
+
+fn check_sums(sum1: &i32, sum2: &i32) -> bool {
+    if sum1 > sum2 {
+        return true
+    }
+    return false;
 }
 
