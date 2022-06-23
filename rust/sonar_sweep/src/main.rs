@@ -2002,22 +2002,22 @@ fn main() {
         6624,
     ];
 
-    let count: i32 = 0;
+    let mut count: i32 = 0;
 
-    for (i, val) in data.iter().enumerate() {
-        let i1: usize = i + 1 as usize;
-        let i2: usize = i + 2;
-        let i3: usize = i + 3;
-        let sum1 = val[i] + val[i1] + val[i2];
-        let sum2 = val[i1] + val[i2] + val[i3];
+    for n in 0..data.len() {
+    println!("{}", count);
+        let limit = data.len() - 3;
+        if n == limit {
+            return;
+        }
+        let sum1 = data[n] + data[n + 1] + data[n + 2];
+        let sum2 = data[n + 1] + data[n + 2] + data[n + 3];
 
-        if check_sums(sum1, sum2) {
-            count += 1;
+        if check_sums(&sum1, &sum2) {
+            count += 1; 
         }
     }
-
     println!("{}", count);
-
 }
 
 
