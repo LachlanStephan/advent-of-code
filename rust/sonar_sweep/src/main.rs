@@ -2005,24 +2005,23 @@ fn main() {
     let mut count: i32 = 0;
 
     for n in 0..data.len() {
-    println!("{}", count);
         let limit = data.len() - 3;
         if n == limit {
-            return;
+            break;
         }
         let sum1 = data[n] + data[n + 1] + data[n + 2];
         let sum2 = data[n + 1] + data[n + 2] + data[n + 3];
 
         if check_sums(&sum1, &sum2) {
-            count += 1; 
+            count = count + 1;
         }
     }
-    println!("{}", count);
+    println!("{}, {}", count, "test");
 }
 
 
 fn check_sums(sum1: &i32, sum2: &i32) -> bool {
-    if sum1 > sum2 {
+    if sum2 > sum1 {
         return true
     }
     return false;
