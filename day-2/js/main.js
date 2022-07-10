@@ -54,7 +54,7 @@ const getSubPosition = (data) => {
 }
 
 const main = () => {
-  fs.readFile("./input.txt", "utf-8", (err, d) => {
+  fs.readFile("../input.txt", "utf-8", (err, d) => {
     if (err) throw err;
 
     const split = splitData(d);
