@@ -8,7 +8,7 @@ const splitData = (data) => {
 
 const formatData = (data) => {
   return data.map((d) => {
-    details = d.split(" ");
+    const details = d.split(" ");
     let dir = details[0];
     let am = details[1];
 
