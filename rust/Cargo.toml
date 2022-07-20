@@ -1,7 +1,15 @@
 [package]
-name = "sonar_sweep"
+name = "advent_of_code"
 version = "0.1.0"
 edition = "2021"
+
+[[bin]]
+name = "sonar_sweep"
+src = "./src/sonar_sweep.rs"
+
+[[bin]]
+name = "dive"
+src = "./src/dive.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

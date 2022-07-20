@@ -11,7 +11,7 @@ fn main() {
 }
 
 fn get_file() -> String {
-    let content = include_str!("../../input.txt");
+    let content = include_str!("../../../input/dive_input.txt");
 
     let data = String::from(content);
     if data.chars().count() == 0 {
