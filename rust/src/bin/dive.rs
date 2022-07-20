@@ -32,7 +32,7 @@ fn format_file(data: Vec<&str>) -> Vec<Directions> {
         let details: Vec<&str> = n.split(" ").collect();
         let dir = details[0];
         let change = details[1];
-        let dirs = Directions{
+        let dirs = Directions {
             direction: dir.to_string(),
             amount: change.to_string(),
         };
@@ -53,9 +53,9 @@ fn get_sub_position(data: Vec<Directions>) -> i32 {
     let mut horizontal = 0;
     let mut depth = 0;
 
-    for commands in data {
-        println!("{}", commands.amount);
-    }
-
+    // loop each data
+    // match on data.direction == "up/down/etc"
+    // update coords
+    // return coord * coord
     return horizontal * depth;
 }
