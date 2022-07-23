@@ -27,9 +27,14 @@ const decreaseValue = (curr, decrease) => {
   return curr - decrease;
 }
 
+const mutliplyValues = (curr, increase) => {
+  return curr * increase;
+}
+
 const getSubPosition = (data) => {
   let horizontal = 0;
   let depth = 0;
+  let aim = 0;
 
   data.forEach((movement) => {
     const dir = movement.direction.toString();
@@ -38,14 +43,15 @@ const getSubPosition = (data) => {
     switch(dir) {
       case "forward": 
         horizontal = increaseValue(horizontal, am);
+        depth = increaseValue(depth, mutliplyValues(aim, am));
       break;
 
       case "down": 
-        depth = increaseValue(depth, am);
+        aim = increaseValue(aim, am);
       break;
 
       case "up": 
-        depth = decreaseValue(depth, am);
+        aim = decreaseValue(aim, am);
       break;
     }
   });
