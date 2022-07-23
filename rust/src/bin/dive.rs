@@ -48,17 +48,22 @@ fn format_file(data: Vec<&str>) -> Vec<Directions> {
     return formatted;
 }
 
-fn decrease_value(curr: i32, val: i32) -> i32 {
+fn decrease_value(curr: i64, val: i64) -> i64 {
     return curr - val;
 }
 
-fn increase_value(curr: i32, val: i32) -> i32 {
+fn increase_value(curr: i64, val: i64) -> i64 {
     return curr + val;
 }
 
-fn get_sub_position(data: Vec<Directions>) -> i32 {
+fn multiply_values(val_1: i64, val_2: i64) -> i64 {
+    return val_1 * val_2;
+}
+
+fn get_sub_position(data: Vec<Directions>) -> i64 {
     let mut horizontal = 0;
-    let mut depth = 0;
+    let mut depth: i64 = 0;
+    let mut aim = 0;
     
     let mut counter = 0;
     let limit = data.len();
@@ -67,23 +72,24 @@ fn get_sub_position(data: Vec<Directions>) -> i32 {
         // format amount to 1st char 
         let mut format_amount = n.amount;
         format_amount.truncate(1);
-        // cast it to i32 
-        let amount = format_amount.parse::<i32>().unwrap();
+        // cast it to i64 
+        let amount = format_amount.parse::<i64>().unwrap();
 
         if counter == limit {
             break;
         }
-        
-        if n.direction == "up" {
-            depth = decrease_value(depth, amount);
-        }
 
         if n.direction == "forward" {
-            horizontal = increase_value(horizontal, amount)
+            horizontal = increase_value(horizontal, amount);
+            depth = increase_value(depth, multiply_values(aim, amount));
         }
 
         if n.direction == "down" {
-            depth = increase_value(depth, amount)
+            aim = increase_value(aim, amount);
+        }
+        
+        if n.direction == "up" {
+            aim = decrease_value(aim, amount);
         }
 
         counter = counter + 1;
